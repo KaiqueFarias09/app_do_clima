@@ -10,22 +10,19 @@ class WeatherModel {
 
     ComunicationWithAPI comunicationWithAPI = ComunicationWithAPI(
       url:
-          "https://api.weatherapi.com/v1/current.json?key=$apiKey&q=${location.latitude},${location.longitude}&aqi=no&lang=pt",
+          "https://api.weatherapi.com/v1/current.json?key=$apiKey&q=${location.latitude},${location.longitude}&aqi=no&lang=en",
     );
     dynamic weatherData = await comunicationWithAPI.getData();
     return weatherData;
   }
 
-    Future<dynamic> getCityWeather(String? cityName) async {
-
+  Future<dynamic> getCityWeather(String? cityName) async {
     ComunicationWithAPI comunicationWithAPI = ComunicationWithAPI(
-      url:
-          "$weatherApiURL?key=$apiKey&q=$cityName=&aqi=no&lang=pt",
+      url: "$weatherApiURL?key=$apiKey&q=$cityName=&aqi=no&lang=pt",
     );
     dynamic weatherData = await comunicationWithAPI.getData();
     return weatherData;
   }
-  
 
   String? changeEmoji(int conditionCode) {
     if (conditionCode == 1000) {
